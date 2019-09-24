@@ -28,8 +28,10 @@ public class Pawn extends AbstractPiece {
             movesArr.add(move2);
         }
 
-        Move move = new Move(from, to);
-        movesArr.add(move);
+        if(!isPieceInFront( board, direction, from )) {
+            Move move = new Move(from, to);
+            movesArr.add(move);
+        }
 
         return movesArr;
     }
@@ -40,5 +42,10 @@ public class Pawn extends AbstractPiece {
         return getColour().equals(PlayerColour.WHITE) && from.getRow() == 6 || getColour().equals(PlayerColour.BLACK) && from.getRow() == 1;
     }
 
+
+    private boolean isPieceInFront( Board board, int direction, Coordinates from ) {
+        Coordinates squareInFront = new Coordinates( from.getRow() + direction, from.getCol() );
+        return board.get(squareInFront) != null;
+    }
 
 }
