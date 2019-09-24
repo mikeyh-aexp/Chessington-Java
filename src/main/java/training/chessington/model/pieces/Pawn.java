@@ -18,9 +18,15 @@ public class Pawn extends AbstractPiece {
 
         ArrayList<Move> movesArr = new ArrayList<>();
 
-        Coordinates to = getColour().equals(PlayerColour.WHITE) ?
-                new Coordinates(from.getRow() - 1, from.getCol()): // if true
-                new Coordinates(from.getRow() + 1, from.getCol()); // else
+        int direction = getColour().equals(PlayerColour.WHITE) ?
+                -1 : 1;
+
+        Coordinates to = new Coordinates(from.getRow() + direction, from.getCol());
+        if(isPawnStartRow(from)) {
+            Coordinates to2 = new Coordinates(from.getRow() + 2 * direction, from.getCol());
+            Move move2 = new Move(from, to2);
+            movesArr.add(move2);
+        }
 
         Move move = new Move(from, to);
         movesArr.add(move);
@@ -28,6 +34,11 @@ public class Pawn extends AbstractPiece {
         return movesArr;
     }
 
+
+
+    private boolean isPawnStartRow( Coordinates from ){
+        return getColour().equals(PlayerColour.WHITE) && from.getRow() == 6 || getColour().equals(PlayerColour.BLACK) && from.getRow() == 1;
+    }
 
 
 }
