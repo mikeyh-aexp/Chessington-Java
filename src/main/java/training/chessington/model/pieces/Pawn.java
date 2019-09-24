@@ -18,18 +18,16 @@ public class Pawn extends AbstractPiece {
 
         ArrayList<Move> movesArr = new ArrayList<>();
 
-        if(getColour() == PlayerColour.WHITE) {
-            Coordinates to = new Coordinates(from.getRow() - 1, from.getCol());
-            Move move = new Move(from, to);
-            movesArr.add(move);
-        } else {
-            Coordinates to = new Coordinates(from.getRow() + 1, from.getCol());
-            Move move = new Move(from, to);
-            movesArr.add(move);
-        }
+        Coordinates to = getColour().equals(PlayerColour.WHITE) ?
+                new Coordinates(from.getRow() - 1, from.getCol()): // if true
+                new Coordinates(from.getRow() + 1, from.getCol()); // else
 
-        System.out.println("Hi Rich!!!");
+        Move move = new Move(from, to);
+        movesArr.add(move);
 
         return movesArr;
     }
+
+
+
 }
