@@ -28,6 +28,8 @@ public class Pawn extends AbstractPiece {
             movesArr.add(move);
         }
 
+        System.out.println("Hi Rich!!!");
+
         return movesArr;
     }
 }
