@@ -28,6 +28,7 @@ public class ChessApp extends Parent {
         getChildren().add(grid);
     }
 
+
     private Square[][] squares = new Square[Game.SIZE][Game.SIZE];
 
     private void buildDisplayBoard() {
@@ -84,6 +85,7 @@ public class ChessApp extends Parent {
             validMoveSquares.add(targetSquare);
             targetSquare.showAsMoveOption();
         }
+
     }
 
     private void redrawPieces() {
