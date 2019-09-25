@@ -24,8 +24,6 @@ public class Pawn extends AbstractPiece {
         Coordinates to1squareDiagonalLeft = new Coordinates(from.getRow() + direction, from.getCol() - 1);
         Coordinates to1squareDiagonalRight = new Coordinates(from.getRow() + direction, from.getCol() + 1);
 
-
-
         if(isPawnStartRow(from)) {
             Coordinates to2squares = new Coordinates(from.getRow() + 2 * direction, from.getCol());
             if(!isPawnInFront(board, direction, from) && !isPawn2InFront(board, direction, from)) {
@@ -45,20 +43,17 @@ public class Pawn extends AbstractPiece {
             }
         }
 
-
-            if (isSquareOnBoard(to1squareDiagonalLeft) && isEnemyPieceInCoord(board, to1squareDiagonalLeft)) {
-                Move moveDiagonalLeft = new Move(from, to1squareDiagonalLeft);
-                movesArr.add(moveDiagonalLeft);
-            }
-            if( isSquareOnBoard(to1squareDiagonalRight) && isEnemyPieceInCoord(board,to1squareDiagonalRight)) {
-                Move moveDiagonalRight = new Move(from, to1squareDiagonalRight);
-                movesArr.add(moveDiagonalRight);
-            }
+        if (isSquareOnBoard(to1squareDiagonalLeft) && isEnemyPieceInCoord(board, to1squareDiagonalLeft)) {
+            Move moveDiagonalLeft = new Move(from, to1squareDiagonalLeft);
+            movesArr.add(moveDiagonalLeft);
+        }
+        if( isSquareOnBoard(to1squareDiagonalRight) && isEnemyPieceInCoord(board,to1squareDiagonalRight)) {
+            Move moveDiagonalRight = new Move(from, to1squareDiagonalRight);
+            movesArr.add(moveDiagonalRight);
+        }
 
         return movesArr;
     }
-
-
 
     private boolean isPawnStartRow( Coordinates from ){
         return getColour().equals(PlayerColour.WHITE) && from.getRow() == 6 || getColour().equals(PlayerColour.BLACK) && from.getRow() == 1;
@@ -79,26 +74,13 @@ public class Pawn extends AbstractPiece {
     }
 
     private boolean isEnemyPieceInCoord(Board board, Coordinates coord ) {
-
-        if (board.get(coord) != null && !board.get(coord).getColour().equals(getColour())) {
-        return true;
-        }
-    else {
-            return false;
-        }
+        return board.get(coord) != null && !board.get(coord).getColour().equals(getColour());
     };
-
 
     private boolean isSquareOnBoard ( Coordinates from) {
         int row = from.getRow();
         int col = from.getCol();
-
-        if (row <= 7 && row >= 0 && col <= 7 && col >= 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return row <= 7 && row >= 0 && col <= 7 && col >= 0;
     }
 
 }
