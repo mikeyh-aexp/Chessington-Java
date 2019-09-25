@@ -78,15 +78,6 @@ public class Pawn extends AbstractPiece {
         return getColour().equals(PlayerColour.WHITE) && from.getRow() == 0 || getColour().equals(PlayerColour.BLACK) && from.getRow() == 7;
     }
 
-    private boolean isEnemyPieceInCoord(Board board, Coordinates coord ) {
-
-        if (board.get(coord) != null && !board.get(coord).getColour().equals(getColour())) {
-        return true;
-        }
-    else {
-            return false;
-        }
-    };
 
 
     private boolean isSquareOnBoard ( Coordinates from) {

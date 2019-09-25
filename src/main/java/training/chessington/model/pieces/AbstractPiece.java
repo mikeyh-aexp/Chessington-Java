@@ -1,5 +1,7 @@
 package training.chessington.model.pieces;
 
+import training.chessington.model.Board;
+import training.chessington.model.Coordinates;
 import training.chessington.model.PlayerColour;
 
 public abstract class AbstractPiece implements Piece {
@@ -26,4 +28,14 @@ public abstract class AbstractPiece implements Piece {
     public String toString() {
         return colour.toString() + " " + type.toString();
     }
+
+    protected boolean isEnemyPieceInCoord(Board board, Coordinates coord ) {
+
+        if (board.get(coord) != null && !board.get(coord).getColour().equals(getColour())) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
 }
