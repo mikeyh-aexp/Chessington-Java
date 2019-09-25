@@ -15,7 +15,7 @@ public class KnightTest {
 
 
     @Test
-    public void whiteKnightCanMoveInLShape() {
+    public void knightCanMoveInLShape() {
         // Arrange
         Board board = Board.empty();
         Piece knight = new Knight(PlayerColour.WHITE);
@@ -32,7 +32,7 @@ public class KnightTest {
     }
 
     @Test
-    public void isWhiteKnightOutOfBounds() {
+    public void knightCannotMoveOutOfBounds() {
         // Arrange
         Board board = Board.empty();
         Piece knight = new Knight(PlayerColour.WHITE);
@@ -43,9 +43,9 @@ public class KnightTest {
         List<Move> moves = knight.getAllowedMoves(coords, board);
 
         // Assert
-        assertThat(moves).contains(new Move(coords, new Coordinates(3, 8)));
-        assertThat(moves).contains(new Move(coords, new Coordinates(7, 8)));
-        assertThat(moves).contains(new Move(coords, new Coordinates(3, 9)));
+        assertThat(moves).doesNotContain(new Move(coords, new Coordinates(3, 8)));
+        assertThat(moves).doesNotContain(new Move(coords, new Coordinates(7, 8)));
+        assertThat(moves).doesNotContain(new Move(coords, new Coordinates(3, 9)));
 
     }
 

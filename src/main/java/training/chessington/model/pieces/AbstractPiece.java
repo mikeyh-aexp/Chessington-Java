@@ -30,12 +30,16 @@ public abstract class AbstractPiece implements Piece {
     }
 
     protected boolean isEnemyPieceInCoord(Board board, Coordinates coord ) {
+        return board.get(coord) != null && !board.get(coord).getColour().equals(getColour());
+    }
 
-        if (board.get(coord) != null && !board.get(coord).getColour().equals(getColour())) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    };
+    protected boolean isFriendlyPieceInCoord(Board board, Coordinates coord) {
+        return board.get(coord) != null && board.get(coord).getColour().equals(getColour());
+    }
+
+    protected boolean isSquareOnBoard (Coordinates from) {
+        int row = from.getRow();
+        int col = from.getCol();
+        return row <= 7 && row >= 0 && col <= 7 && col >= 0;
+    }
 }

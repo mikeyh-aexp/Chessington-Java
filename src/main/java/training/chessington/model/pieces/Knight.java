@@ -29,8 +29,7 @@ public class Knight extends AbstractPiece {
         coordArr.add(from.plus(+1,+2));
 
         for ( Coordinates item : coordArr ) {
-
-            if (isEnemyPieceInCoord(board, item)) {
+            if (isSquareOnBoard(item) && !isFriendlyPieceInCoord(board, item)) {
                 movesArr.add(new Move(from, item));
             }
         }

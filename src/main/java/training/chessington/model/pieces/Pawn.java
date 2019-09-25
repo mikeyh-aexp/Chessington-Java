@@ -72,12 +72,4 @@ public class Pawn extends AbstractPiece {
     private boolean isPawnEndRow( Coordinates from ) {
         return getColour().equals(PlayerColour.WHITE) && from.getRow() == 0 || getColour().equals(PlayerColour.BLACK) && from.getRow() == 7;
     }
-
-
-    private boolean isSquareOnBoard ( Coordinates from) {
-        int row = from.getRow();
-        int col = from.getCol();
-        return row <= 7 && row >= 0 && col <= 7 && col >= 0;
-    }
-
 }
